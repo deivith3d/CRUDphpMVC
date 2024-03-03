@@ -22,20 +22,21 @@
         print"</tr>";
         while ($row = $res->fetch(PDO::FETCH_OBJ)) {
             print "<tr>";
-            echo "<form method='post' action='../controller/AlunoController.php'>";
-            print "<td name='idAluno'>".$row->idAlu."</td>";
+            echo "<form method='post' action='../controller/processaAluno.php'>";
+            print "<td>".$row->idAlu."</td>";
             print "<td>".$row->nomeAlu."</td>"; 
             print "<td>".$row->matriculaAlu."</td>";
             print "<td>".$row->cpfAlu."</td>";
             print "<td>".$row->idadeAlu."</td>";
             print "<td>".$row->emailAlu."</td>";
             print "<td>
-                        <input type='hidden' name='op' value='altera' />
+                        <input type='hidden' name='idAluno' value='$row->idAlu' />
+                        <input type='hidden' name='op' value='formAlterar' />
                         <input type='submit' value='Alterar'>
 
                     </td>";
             print "<td>
-                    <input type='hidden' name='op' value='exclui' />
+                    <input type='hidden' name='op' value='formAlterar' />
                     <input type='submit' value='Excluir'>
 
                 </td>";

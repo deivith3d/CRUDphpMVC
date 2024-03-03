@@ -7,14 +7,21 @@ class AlunoModel {
     protected $cpf;
     protected $idade;
     protected $email;
+    protected $id;
 
     // Construtor
-    public function __construct($nome, $matricula, $cpf, $idade, $email) {
+    public function __construct($id,$nome, $matricula, $cpf, $idade, $email) {
+        $this->id = $id;
         $this->nome = $nome;
         $this->matricula = $matricula;
         $this->cpf = $cpf;
         $this->idade = $idade;
         $this->email = $email;
+    }
+
+    public function getID()
+    {
+        return $this->id;
     }
 
     public function getNome()
@@ -92,6 +99,20 @@ class AlunoModel {
         include '../dao/AlunoDAO.php';
         $dao = new AlunoDAO(null);
         return $dao->listarAlunos();
+    }
+
+    public function resgataPorID($idAluno){
+        include '../dao/AlunoDAO.php';
+        $model = new AlunoDAO(null);
+        return $model->resgataPorID($idAluno);
+
+    }
+
+    public function alterarAluno(AlunoModel $aluno)
+    {
+        include_once '../dao/AlunoDAO.php';
+        $aluno = new AlunoDAO();
+        $aluno->alterarAluno($this);
     }
 
 
