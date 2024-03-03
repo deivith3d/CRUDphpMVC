@@ -20,8 +20,17 @@ class AlunoDAO {
             echo "<script>alert('Cadastro Realizado com sucesso');<script>";
         }
         else{
-            echo "<script>alert('Erro: Não foi possível realizadr o cadastro');<script>";
+            echo "<script>alert('Erro: Não foi possível realizar o cadastro');<script>";
         }
+    }
+
+    public function listarAlunos()
+    {
+        include_once 'Conexao.php';
+        $conex = new Conexao();
+        $conex->fazConexao();
+        $sql= "SELECT * FROM aluno ORDER BY idAlu";
+        return $conex->conn->query($sql);
     }
 }
 ?>

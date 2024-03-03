@@ -80,6 +80,21 @@ class AlunoModel {
         $aluno = new AlunoDAO();
         $aluno->cadastraAluno($this);
     }
+
+   /* public static function listarAlunos()
+    {
+        include '../dao/AlunoDAO.php';
+        return AlunoDAO::listarAlunos();
+    }*/
+
+    public function listarAlunos()
+    {
+        include '../dao/AlunoDAO.php';
+        $dao = new AlunoDAO(null);
+        return $dao->listarAlunos();
+    }
+
+
 }
 
 ?>

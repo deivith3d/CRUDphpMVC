@@ -1,19 +1,28 @@
 <?php
-    // Obtendo dados do formulário e fazendo validações
-    $nome = $_POST["nome"];
-    $matricula = $_POST["matricula"];    
-    $cpf = $_POST["cpf"];
-    $idade = $_POST["idade"];
-    $email = $_POST["email"];
+    class AlunoController{
+        public static function cadastrarAluno($nome, $matricula, $cpf, $idade, $email)
+        {
+            include '../model/AlunoModel.php';
+            // Criando uma instância da classe AlunoModel
+            $aluno = new AlunoModel($nome, $matricula, $cpf, $idade, $email);
+            // Cadastrando o aluno
+            $aluno->cadastrarAluno($aluno);
+        }
 
-    // Incluindo a classe AlunoModel
-    include '../model/AlunoModel.php';
+    /*    public static function listarAlunos()
+        {
+            include '../model/AlunoModel.php';
+            return AlunoModel::listarAlunos();
+        }*/
 
-    // Criando uma instância da classe AlunoModel
-    $aluno = new AlunoModel($nome, $matricula, $cpf, $idade, $email);
+        public static function listarAlunos()
+        {
+            include '../model/AlunoModel.php';
+            $model = new AlunoModel(null,null,null,null,null);
+            return $model->listarAlunos();
+        }
 
-    // Cadastrando o aluno
-    $aluno->cadastrarAluno($aluno);
 
+    }
 
 ?>
