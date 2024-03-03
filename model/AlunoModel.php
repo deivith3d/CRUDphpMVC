@@ -28,6 +28,17 @@ class AlunoModel {
         return $this;
     }
 
+    public function getMatricula()
+    {
+        return $this->matricula;
+    }
+
+    public function setMatricula($matricula)
+    {
+        $this->matricula = $matricula;
+        return $this;
+    }
+
     public function getCpf()
     {
             return $this->cpf;

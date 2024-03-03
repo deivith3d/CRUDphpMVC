@@ -2,19 +2,24 @@
 
 class Conexao {
     // Atributos
-    protected $conn;
+    private $host = 'localhost:3306';
+    private $db_name = 'escola';
+    private $username = 'root';
+    private $password = 'root';
+    public $conn;
 
     public function fazConexao()
     {
         try{
-            $banco="mysql:host=localhost:3306;dbname=escola";
-            $this->coon = new PDO($banco,'root','root');
+            $this->conn = new PDO("mysql:host={$this->host};dbname={$this->db_name}", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         }
         catch(PDOException $e){
             echo "Erro de Conexao: ".$e->getMessage();
 
         }
+        return $this->conn;
     }
 }
 ?>

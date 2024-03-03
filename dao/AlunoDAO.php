@@ -7,13 +7,13 @@ class AlunoDAO {
         include_once 'Conexao.php';
         $conex = new Conexao();
         $conex->fazConexao();
-        $sql = "INSERT INTO aluno(nomeAlu, matriculaAlu, cpfAlu, idadeAlu, emailAlu) VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO aluno (nomeAlu, matriculaAlu, cpfAlu, idadeAlu, emailAlu) VALUES (:nome, :matricula, :cpf, :idade, :email)";
         $stmt = $conex->conn->prepare($sql);
-        $stmt = bindValue(1,$aluno->nome);
-        $stmt = bindValue(2,$aluno->matricula);
-        $stmt = bindValue(3,$aluno->cpf);
-        $stmt = bindValue(4,$aluno->idade);
-        $stmt = bindValue(5,$aluno->email);
+        $stmt->bindValue(':nome',$aluno->getNome());
+        $stmt->bindValue(':matricula',$aluno->getMatricula());
+        $stmt->bindValue(':cpf',$aluno->getCpf());
+        $stmt->bindValue(':idade',$aluno->getIdade());
+        $stmt->bindValue(':email',$aluno->getEmail());
         $res = $stmt->execute();
         if($res)
         {
