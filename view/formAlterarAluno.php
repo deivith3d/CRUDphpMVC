@@ -9,7 +9,7 @@
 
 <?php
     include("../controller/AlunoController.php"); 
-    $res = AlunoController::resgataPorID($_POST["idAluno"]);
+    $res = AlunoController::resgataPorID($_REQUEST["idAluno"]);
     $qtd = $res->rowCount();
     $row = $res->fetch(PDO::FETCH_OBJ);
     print "<form method='post' action='../controller/processaAluno.php'>";
@@ -25,7 +25,7 @@
     print "    <input type='text' name='email' value=".$row->emailAlu."><br>";
     print "    <input type='hidden' name='idAluno' value='$row->idAlu'><br>";
     print "    <input type='hidden' name='op' value='alterar'><br>";
-    print "    <input type='submit' value='Enviar'>";
+    print "    <input type='submit' value='Alterar'>";
     print " </form>";
 
 

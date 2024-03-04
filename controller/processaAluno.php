@@ -1,56 +1,57 @@
    <?php 
+      switch($_REQUEST["op"])
+      {
+            case "incluir": 
+                  incluir();break;
+            case "formAlterar": 
+                  formAlterar();break;
+            case "alterar": 
+                  alterar();break;
+            case "excluir": 
+                  excluir();break;
+            case "listar": 
+                  listar();break;
+            default: 
+                  echo "nao encontrou chave";
+      }
 
-   switch($_POST["op"])
-   {
-      case "incluir": incluir();break;
-      case "formAlterar": formAlterar(); 
-          break;
-          case "alterar": alterar();break;
-      case "listar": listar();break;
-   }
+      function incluir(){
+         $nome = $_POST["nome"];
+         $matricula = $_POST["matricula"];    
+         $cpf = $_POST["cpf"];
+         $idade = $_POST["idade"];
+         $email = $_POST["email"];
+         include 'AlunoController.php';
+         $contr = new AlunoController();
+         $contr->cadastrarAluno($nome, $matricula, $cpf, $idade, $email);
+      }
+      
+      function formAlterar()
+      {
+         include '../view/formAlterarAluno.php';
+      }
 
+      function alterar(){
+         $nome = $_POST["nome"];
+         $matricula = $_POST["matricula"];    
+         $cpf = $_POST["cpf"];
+         $idade = $_POST["idade"];
+         $email = $_POST["email"];
+         $id = $_POST["idAluno"];
+         include 'AlunoController.php';
+         $contr = new AlunoController();
+         $contr->alterarAluno($id,$nome, $matricula, $cpf, $idade, $email);
+      }
 
-   function incluir(){
-      // Obtendo dados do formulário
-      $nome = $_POST["nome"];
-      $matricula = $_POST["matricula"];    
-      $cpf = $_POST["cpf"];
-      $idade = $_POST["idade"];
-      $email = $_POST["email"];
+      function excluir(){
+         $id = $_REQUEST["idAluno"];
+         include 'AlunoController.php';
+         $contr = new AlunoController();
+         $contr->excluirAluno($id);
+      }
 
-      // Incluindo a classe AlunoController
-      include 'AlunoController.php';
-      $contr = new AlunoController();
-      // Cadastrando o aluno
-      $contr->cadastrarAluno($nome, $matricula, $cpf, $idade, $email);
-   }
-   function formAlterar()
-   {
-      include '../view/formAlterarAluno.php';
-
-   }
-
-   function alterar(){
-      // Obtendo dados do formulário
-      $nome = $_POST["nome"];
-      $matricula = $_POST["matricula"];    
-      $cpf = $_POST["cpf"];
-      $idade = $_POST["idade"];
-      $email = $_POST["email"];
-      $id = $_POST["idAluno"];
-
-      // Alterando a classe AlunoController
-      include 'AlunoController.php';
-      $contr = new AlunoController();
-      // Cadastrando o aluno
-      $contr->alterarAluno($id,$nome, $matricula, $cpf, $idade, $email);
-   }
-
-   function listar()
-   {
-
-   }
-
-
-
-    ?>
+      function listar()
+      {
+         include '../view/formListarAluno.php';
+      }
+?>
