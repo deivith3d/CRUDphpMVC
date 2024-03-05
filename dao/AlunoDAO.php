@@ -21,7 +21,7 @@
             else{
                 echo "<script>alert('Erro: Não foi possível realizar o cadastro');</script>";
             }
-            echo "<script>location.href='../controller/processaAluno.php?op=listar';</script>";
+            echo "<script>location.href='../controller/processaAluno.php?op=Listar';</script>";
         }
 
         public function listarAlunos()
@@ -62,7 +62,7 @@
                 echo "<script>alert('Erro: Não foi possível alterar o cadastro');</script>";
 
             }
-            echo "<script>location.href='../controller/processaAluno.php?op=listar';</script>";
+            echo "<script>location.href='../controller/processaAluno.php?op=Listar';</script>";
         }
 
         public function excluirAluno($idAluno){
@@ -79,7 +79,7 @@
             {
                 echo "<script>alert('Não foi possível excluir o usuário!');</script>";
             }
-            echo "<script>location.href='../controller/processaAluno.php?op=listar';</script>";
+            echo "<script>location.href='../controller/processaAluno.php?op=Listar';</script>";
         }
     }
 ?>

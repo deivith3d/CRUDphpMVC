@@ -15,9 +15,10 @@
             print "<tr>";
             print "<th>#</th>";
             print "<th>Nome</th>"; 
-            print "<th>E-mail</th>";
-            print "<th>Data de Nascimento</th>";
-            print "<th>Ações</th>";
+            print "<th>Matrícula</th>";
+            print "<th>CPF</th>";
+            print "<th>Idade</th>";
+            print "<th>Email</th>";
             print"</tr>";
             while ($row = $res->fetch(PDO::FETCH_OBJ)) {
                 print "<tr>";
@@ -28,9 +29,9 @@
                 print "<td>".$row->idadeAlu."</td>";
                 print "<td>".$row->emailAlu."</td>";
                 print "<td>
-                            <button onclick=\"location.href = '../controller/processaAluno.php?op=formAlterar&idAluno=".$row->idAlu."';\">Alterar</button>
+                            <button onclick=\"location.href = '../view/formAluno.php?op=Alterar&idAluno=".$row->idAlu."';\">Alterar</button>
                             <button onclick=\"if(confirm('Tem certeza que deseja excluir?')) {
-                                location.href = '../controller/processaAluno.php?op=excluir&idAluno=".$row->idAlu."'; }
+                                location.href = '../controller/processaAluno.php?op=Excluir&idAluno=".$row->idAlu."'; }
                                 else { false; }\">Excluir</button>
                         </td>";
                 echo "</form>";

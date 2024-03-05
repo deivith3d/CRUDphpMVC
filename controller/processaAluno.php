@@ -1,15 +1,13 @@
    <?php 
       switch($_REQUEST["op"])
       {
-            case "incluir": 
+            case "Incluir": 
                   incluir();break;
-            case "formAlterar": 
-                  formAlterar();break;
-            case "alterar": 
+            case "Alterar": 
                   alterar();break;
-            case "excluir": 
+            case "Excluir": 
                   excluir();break;
-            case "listar": 
+            case "Listar": 
                   listar();break;
             default: 
                   echo "nao encontrou chave";
@@ -26,11 +24,6 @@
          $contr->cadastrarAluno($nome, $matricula, $cpf, $idade, $email);
       }
       
-      function formAlterar()
-      {
-         include '../view/formAlterarAluno.php';
-      }
-
       function alterar(){
          $nome = $_POST["nome"];
          $matricula = $_POST["matricula"];    

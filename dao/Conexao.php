@@ -5,7 +5,7 @@ class Conexao {
     private $host = 'localhost:3306';
     private $db_name = 'escola';
     private $username = 'root';
-    private $password = 'root';
+    private $password = '';
     public $conn;
 
     public function fazConexao()
